@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock, Paper, Scissors</title>
+  </head>
+  <body>
+    <script>
+      // returns random number between 0 and 2, inclusive
+      function getRandomInt() {
+        return Math.floor(Math.random() * 3);
+      }
+      // converts number between 0-2 into rock, paper, or scissors
+      function convertRandomInt(num) {
+        switch (num) {
+          case 0:
+            return 'rock';
+            break;
+          case 1:
+            return 'paper';
+            break;
+          case 2:
+            return 'scissors';
+            break;
+          default:
+            return 'There must be an error';
+        }
+      }
+      // calls getRandomInt and converts result using convertRandomInt
+      function computerPlay() {
+        let result = getRandomInt();
+        return convertRandomInt(result);
+      }
+    </script>
+  </body>
+</html>
