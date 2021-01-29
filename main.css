@@ -6,34 +6,57 @@ html {
   padding: 0;
   box-sizing: border-box;
 }
+:focus-visible {
+  outline: 0.1em dashed rgba(214, 214, 214, 1);
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
 body {
   font-size: calc(1rem + 1vw);
   width: 100%;
+  overflow-x: hidden;
+  background-color: rgba(42, 42, 42, 1);
+  color: rgba(214, 214, 214, 1);
+}
+a {
+  color: rgba(90, 208, 255, 1);
+  text-decoration: none;
+}
+a:hover,
+a:focus,
+a:active {
+  text-decoration: underline;
 }
 .buttons {
   width: 100vw;
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 2em;
+  margin: 1.5em 0 2em 0;
 }
-button {
+input {
   font-size: inherit;
-  width: 20vw;
+  width: 15vw;
+}
+input:hover,
+input:focus-visible {
+  outline: none;
+  filter: drop-shadow(3px 0px 5px rgba(214, 214, 214, 0.75));
 }
 main {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: calc(100vh - 1.5em);
+  min-height: calc(100vh - 1.5em);
   flex-flow: column wrap;
 }
 footer {
   height: 1.5em;
   width: 100vw;
 }
-footer p {
-  text-align: center;
-}
 small {
   font-size: 0.5em;
+}
+h1,
+p {
+  text-align: center;
 }
