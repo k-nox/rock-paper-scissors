@@ -60,3 +60,15 @@ h1,
 p {
   text-align: center;
 }
+.generated {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.5s;
+}
+.hidden {
+  transform: scale(0);
+  opacity: 0;
+}
+.end {
+  transform: translateY(-200%);
+}

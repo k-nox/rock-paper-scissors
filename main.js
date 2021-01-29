@@ -39,6 +39,21 @@ const playerScoreTracker = document.createElement('p');
 const computerScoreTracker = document.createElement('p');
 const roundMessage = document.createElement('p');
 const endMessage = document.createElement('p');
+const startOverMessage = document.createElement('p');
+
+playerScoreTracker.classList.add('generated', 'hidden');
+computerScoreTracker.classList.add('generated', 'hidden');
+roundMessage.classList.add('generated', 'hidden');
+endMessage.classList.add('generated', 'hidden');
+startOverMessage.classList.add('generated', 'hidden');
+
+startOverMessage.textContent = 'To start over, just pick a new weapon!';
+
+resultsDiv.appendChild(roundMessage);
+resultsDiv.appendChild(playerScoreTracker);
+resultsDiv.appendChild(computerScoreTracker);
+resultsDiv.appendChild(endMessage);
+resultsDiv.appendChild(startOverMessage);
 
 //* one round of gameplay with messages
 function playRound(playerSelection, computerSelection) {
@@ -48,40 +63,32 @@ function playRound(playerSelection, computerSelection) {
 
   if (playerSelection === computerSelection) {
     roundMessage.textContent = tieMessage;
-    return resultsDiv.appendChild(roundMessage);
   } else if (playerSelection === 'rock') {
     if (computerSelection === 'paper') {
       roundMessage.textContent = computerWinMessage;
-      resultsDiv.appendChild(roundMessage);
-      return computerScore++;
+      computerScore++;
     } else {
       roundMessage.textContent = playerWinMessage;
-      resultsDiv.appendChild(roundMessage);
-      return playerScore++;
+      playerScore++;
     }
   } else if (playerSelection === 'paper') {
     if (computerSelection === 'rock') {
       roundMessage.textContent = playerWinMessage;
-      resultsDiv.appendChild(roundMessage);
-      return playerScore++;
+      playerScore++;
     } else {
       roundMessage.textContent = computerWinMessage;
-      resultsDiv.appendChild(roundMessage);
-      return computerScore++;
+      computerScore++;
     }
   } else if (playerSelection === 'scissors') {
     if (computerSelection === 'rock') {
       roundMessage.textContent = computerWinMessage;
-      resultsDiv.appendChild(roundMessage);
-      return computerScore++;
+      computerScore++;
     } else {
       roundMessage.textContent = playerWinMessage;
-      resultsDiv.appendChild(roundMessage);
-      return playerScore++;
+      playerScore++;
     }
-  } else {
-    return 'ERROR';
   }
+  roundMessage.classList.remove('hidden');
 }
 
 //* plays game when button is clicked and keeps track of score
@@ -90,21 +97,32 @@ function game(e) {
     //* resets scores to 0 if there has been a winner
     playerScore = 0;
     computerScore = 0;
+    endMessage.classList.add('hidden');
+    endMessage.classList.remove('end');
+    startOverMessage.classList.add('hidden');
+    startOverMessage.classList.remove('end');
   }
   playRound(e.target.id, computerPlay());
 
   playerScoreTracker.textContent = `Your score: ${playerScore}`;
-  resultsDiv.appendChild(playerScoreTracker);
-
   computerScoreTracker.textContent = `Computer score: ${computerScore}`;
-  resultsDiv.appendChild(computerScoreTracker);
-  if (playerScore === 5) {
-    endMessage.textContent = `Game over! You beat the computer ${playerScore} to ${computerScore}!`;
-    resultsDiv.appendChild(endMessage);
-  }
-  if (computerScore === 5) {
-    endMessage.textContent = `How embarassing! The computer beat you ${computerScore} to ${playerScore}.`;
-    resultsDiv.appendChild(endMessage);
+
+  playerScoreTracker.classList.remove('hidden');
+  computerScoreTracker.classList.remove('hidden');
+
+  if (playerScore === 5 || computerScore === 5) {
+    playerScoreTracker.classList.add('hidden');
+    computerScoreTracker.classList.add('hidden');
+    endMessage.classList.remove('hidden');
+    endMessage.classList.add('end');
+    startOverMessage.classList.remove('hidden');
+    startOverMessage.classList.add('end');
+
+    if (playerScore === 5) {
+      endMessage.textContent = `Game over! You beat the computer ${playerScore} to ${computerScore}!`;
+    } else {
+      endMessage.textContent = `How embarassing! The computer beat you ${computerScore} to ${playerScore}.`;
+    }
   }
 }
 
