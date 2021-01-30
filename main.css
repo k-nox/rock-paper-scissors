@@ -37,10 +37,11 @@ a:active {
   justify-content: space-evenly;
   margin: 1.5em 0 2em 0;
   transition: all 0.5s;
+  flex-flow: row wrap;
 }
 input {
   font-size: inherit;
-  width: 15vw;
+  width: 15vmax;
 }
 input:hover,
 input:focus-visible {
