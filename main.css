@@ -1,0 +1,113 @@
+html {
+  font-size: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:focus-visible {
+  outline: 0.1em dashed rgba(214, 214, 214, 1);
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+body {
+  font-size: calc(1rem + 1vw);
+  width: 100%;
+  overflow-x: hidden;
+  background-color: rgba(42, 42, 42, 1);
+  color: rgba(214, 214, 214, 1);
+  font-family: 'Arvo', Georgia, 'Times New Roman', Times, serif;
+  --title-load-time: 300ms;
+  --start-load-time: 500ms;
+}
+a {
+  color: rgba(90, 208, 255, 1);
+  text-decoration: none;
+}
+a:hover,
+a:focus,
+a:active {
+  text-decoration: underline;
+}
+.buttons {
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1.5em 0 2em 0;
+  transition: all 0.5s;
+}
+input {
+  font-size: inherit;
+  width: 15vw;
+}
+input:hover,
+input:focus-visible {
+  outline: none;
+  filter: drop-shadow(3px 0px 5px rgba(214, 214, 214, 0.75));
+}
+main {
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 1.5em);
+  flex-flow: column wrap;
+}
+footer {
+  height: 1.5em;
+  width: 100vw;
+}
+small {
+  font-size: 0.5em;
+}
+h1,
+p {
+  text-align: center;
+}
+h1 {
+  font-family: 'Eater', cursive;
+  animation: title-load var(--title-load-time) ease-in;
+}
+.start {
+  animation: start-load var(--start-load-time) ease-in var(--title-load-time);
+  animation-fill-mode: forwards;
+  opacity: 1;
+  transform: scale(0);
+  transition: all 0.5s;
+}
+.hidden {
+  transform: scale(0);
+  opacity: 0;
+}
+.end {
+  margin-top: -1em;
+  font-size: 1.5em;
+}
+.wrapper {
+  transition: margin-top 0.5s;
+}
+.up {
+  margin-top: -3em;
+}
+@keyframes title-load {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes start-load {
+  0% {
+    transform: scale(0);
+  }
+
+  90% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

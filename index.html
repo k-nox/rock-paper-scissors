@@ -4,154 +4,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock, Paper, Scissors</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#2b5797" />
+    <meta name="msapplication-TileColor" content="#2b5797" />
+    <meta name="theme-color" content="#2b5797" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arvo&family=Eater&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <script defer src="main.js"></script>
   </head>
   <body>
-    <script>
-      // returns random number between 0 and 2, inclusive
-      function getRandomInt() {
-        return Math.floor(Math.random() * 3);
-      }
-      // converts number between 0-2 into rock, paper, or scissors
-      function convertRandomInt(num) {
-        switch (num) {
-          case 0:
-            return 'rock';
-            break;
-          case 1:
-            return 'paper';
-            break;
-          case 2:
-            return 'scissors';
-        }
-      }
-      // calls getRandomInt and converts result using convertRandomInt
-      function computerPlay() {
-        let result = getRandomInt();
-        return convertRandomInt(result);
-      }
-      // obtains player answer and converts to match computer answer
-      function playerPlay() {
-        let result = prompt('Rock, paper, or scissors?');
-
-        const rock = /^r[0o][ck]{2}$/i;
-        const paper = /^p[a@]p[e3]r$/i;
-        const scissors = /^[s5z][ck]i[s5z]{2}[o0]r[s5z]$/i;
-
-        result = result.replace(rock, 'rock');
-        result = result.replace(paper, 'paper');
-        result = result.replace(scissors, 'scissors');
-
-        if (result === 'rock' || result === 'paper' || result === 'scissors') {
-          return result;
-        } else {
-          return 'There must be an error somewhere. Please try again!';
-        }
-      }
-      // runs playerPlay and computerPlay and returns result of one round
-      let finalResult;
-
-      function playRound(playerSelection, computerSelection) {
-        let playerAnswer = playerSelection();
-        let computerAnswer = computerSelection();
-
-        if (playerAnswer === computerAnswer) {
-          finalResult = 'tie';
-          return finalResult;
-        } else if (playerAnswer === 'rock') {
-          if (computerAnswer === 'paper') {
-            finalResult = 'You lose! Paper beats rock.';
-            return finalResult;
-          } else {
-            finalResult = 'You win! Rock smashes scissors.';
-            return finalResult;
-          }
-        } else if (playerAnswer === 'paper') {
-          if (computerAnswer === 'rock') {
-            finalResult = 'You win! Paper beats rock.';
-            return finalResult;
-          } else {
-            finalResult = 'You lose! Scissors cut paper.';
-            return finalResult;
-          }
-        } else if (playerAnswer === 'scissors') {
-          if (computerAnswer === 'paper') {
-            finalResult = 'You win! Scissors cut paper.';
-            return finalResult;
-          } else {
-            finalResult = 'You lose! Rock smashes scissors.';
-            return finalResult;
-          }
-        } else {
-          finalResult = 'There must be an error somewhere, please try again!';
-          return finalResult;
-        }
-      }
-
-      function game() {
-        let computerScore = 0;
-        let playerScore = 0;
-        for (let i = 0; i < 5; i++) {
-          playRound(playerPlay, computerPlay);
-          switch (finalResult) {
-            case 'tie':
-              console.log(`Round Results: You tied! Let's keep going.
-                          Computer score: ${computerScore}
-                          Player Score: ${playerScore} `);
-              break;
-            case 'You lose! Paper beats rock.':
-              computerScore++;
-              console.log(`Round Results: ${finalResult}
-                          Computer score: ${computerScore}
-                          Player Score: ${playerScore} `);
-              break;
-            case 'You win! Rock smashes scissors.':
-              playerScore++;
-              console.log(`Round Results: ${finalResult}
-                          Computer score: ${computerScore}
-                          Player Score: ${playerScore} `);
-              break;
-            case 'You win! Paper beats rock.':
-              playerScore++;
-              console.log(`Round Results: ${finalResult}
-                          Computer score: ${computerScore}
-                          Player Score: ${playerScore} `);
-              break;
-            case 'You lose! Scissors cut paper.':
-              computerScore++;
-              console.log(`Round Results: ${finalResult}
-                          Computer score: ${computerScore}
-                          Player Score: ${playerScore} `);
-              break;
-            case 'You win! Scissors cut paper.':
-              playerScore++;
-              console.log(`Round Results: ${finalResult}
-                          Computer score: ${computerScore}
-                          Player Score: ${playerScore} `);
-              break;
-            case 'You lose! Rock smashes scissors.':
-              computerScore++;
-              console.log(`Round Results: ${finalResult}
-                          Computer score: ${computerScore}
-                          Player Score: ${playerScore} `);
-              break;
-            default:
-              console.log(
-                'Sorry, I think there is an error somewhere. Pleae try again!'
-              );
-          }
-        }
-        if (playerScore > computerScore) {
-          console.log(
-            `Congrats! You beat the computer ${playerScore} to ${computerScore}`
-          );
-        } else if (playerScore < computerScore) {
-          console.log(
-            `Oof... The computer beat you ${computerScore} to ${playerScore}!`
-          );
-        } else {
-          console.log(`Looks like you tied this time! Wanna go again?`);
-        }
-      }
-    </script>
+    <main>
+      <h1>It's you against the machine!</h1>
+      <div class="start">
+        <p>Can you handle the pressure?</p>
+        <p>Choose your weapon to get started:</p>
+      </div>
+      <div class="wrapper">
+        <div class="buttons">
+          <input
+            type="image"
+            src="images/rock.svg"
+            alt="rock"
+            id="rock"
+            title="Rock"
+          />
+          <input
+            type="image"
+            src="images/papers.svg"
+            alt="paper"
+            id="paper"
+            title="Paper"
+          />
+          <input
+            type="image"
+            src="images/scissors.svg"
+            alt="scissors"
+            id="scissors"
+            title="Scissors"
+          />
+        </div>
+        <div class="results"></div>
+      </div>
+    </main>
+    <footer>
+      <p>
+        <small
+          >Icons made by
+          <a href="https://www.flaticon.com/authors/dinosoftlabs"
+            >DinosoftLabs</a
+          >
+          and <a href="https://www.freepick.com">Freepick</a> from
+          <a href="https://www.flaticon.com/">www.flaticon.com</a></small
+        >
+      </p>
+    </footer>
   </body>
 </html>
