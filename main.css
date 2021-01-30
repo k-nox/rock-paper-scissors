@@ -18,6 +18,9 @@ body {
   overflow-x: hidden;
   background-color: rgba(42, 42, 42, 1);
   color: rgba(214, 214, 214, 1);
+  font-family: 'Arvo', Georgia, 'Times New Roman', Times, serif;
+  --title-load-time: 300ms;
+  --start-load-time: 500ms;
 }
 a {
   color: rgba(90, 208, 255, 1);
@@ -33,6 +36,7 @@ a:active {
   display: flex;
   justify-content: space-evenly;
   margin: 1.5em 0 2em 0;
+  transition: all 0.5s;
 }
 input {
   font-size: inherit;
@@ -60,9 +64,15 @@ h1,
 p {
   text-align: center;
 }
-.generated {
+h1 {
+  font-family: 'Eater', cursive;
+  animation: title-load var(--title-load-time) ease-in;
+}
+.start {
+  animation: start-load var(--start-load-time) ease-in var(--title-load-time);
+  animation-fill-mode: forwards;
   opacity: 1;
-  transform: scale(1);
+  transform: scale(0);
   transition: all 0.5s;
 }
 .hidden {
@@ -70,5 +80,34 @@ p {
   opacity: 0;
 }
 .end {
-  transform: translateY(-200%);
+  margin-top: -1em;
+  font-size: 1.5em;
+}
+.wrapper {
+  transition: margin-top 0.5s;
+}
+.up {
+  margin-top: -3em;
+}
+@keyframes title-load {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes start-load {
+  0% {
+    transform: scale(0);
+  }
+
+  90% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
