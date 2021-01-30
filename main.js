@@ -73,13 +73,13 @@ function createRoundMessage(winner, weapon, num) {
       switch (num) {
         case 0:
           message =
-            'Scissors are no match against a rock! The computer beat you this time.';
+            'Scissors are no match against a rock! The computer beats you this time.';
           break;
         case 1:
           message = 'The computer wins this round! Rock smashes scissors.';
           break;
         case 2:
-          message = "What a shame! The computer's rock broke your scissors.";
+          message = "What a shame! The computer's rock breaks your scissors.";
           break;
         default:
           message = 'ERROR';
@@ -90,7 +90,7 @@ function createRoundMessage(winner, weapon, num) {
       switch (num) {
         case 0:
           message =
-            "Your rock is no match for the machine's paper! You lost this round.";
+            "Your rock is no match for the machine's paper! You lose this round.";
           break;
         case 1:
           message = 'The computer wins this round! Paper hides rock.';
@@ -115,7 +115,7 @@ function createRoundMessage(winner, weapon, num) {
           break;
         case 2:
           message =
-            "You've brought shame on that nice paper. The computer shreded it with its scissors!";
+            "You've brought shame on that nice paper. The computer shreds it with its scissors!";
           break;
         default:
           message = 'ERROR';
@@ -129,7 +129,7 @@ function createRoundMessage(winner, weapon, num) {
       switch (num) {
         case 0:
           message =
-            'How did you do it?! You won this round - rock crushes scissors!';
+            'How did you do it?! You win this round - rock crushes scissors!';
           break;
         case 1:
           message = "You win this round! Rock smashes the computer's scissors.";
@@ -147,14 +147,14 @@ function createRoundMessage(winner, weapon, num) {
       switch (num) {
         case 0:
           message =
-            "You successfully hid the computer's rock with your paper. It's nowhere to be found!";
+            "You successfully hide the computer's rock with your paper. It's nowhere to be found!";
           break;
         case 1:
           message = 'You win this round! Paper covers rock.';
           break;
         case 2:
           message =
-            "I can't believe the computer didn't think this through...your paper beats the computer's rock easily.";
+            "The computer has no object permanence so your paper beats it's rock easily. If it can't see it, it doesn't exist!";
           break;
         default:
           message = 'ERROR';
@@ -172,7 +172,7 @@ function createRoundMessage(winner, weapon, num) {
           break;
         case 2:
           message =
-            'You know, the computer told me it saved up a lot for that nice paper, and you just sliced it with your scissors like it meant nothing.';
+            "You know, the computer told me it saved up a lot for that nice paper, and you're just slicing it with your scissors like it means nothing.";
           break;
         default:
           message = 'ERROR';
